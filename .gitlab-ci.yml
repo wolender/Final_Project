@@ -18,16 +18,22 @@ stages:
 fmt:
   extends: .terraform:fmt
   needs: []
+  tags:
+    - main
 
 validate:
   extends: .terraform:validate
   needs: []
+  tags:
+    - main
 
 build:
   extends: .terraform:build
   environment:
     name: $TF_STATE_NAME
     action: prepare
+  tags:
+    - main
 
 deploy:
   extends: .terraform:deploy
@@ -36,3 +42,5 @@ deploy:
   environment:
     name: $TF_STATE_NAME
     action: start
+  tags:
+    - main
