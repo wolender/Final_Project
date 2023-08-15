@@ -12,5 +12,8 @@ provider "aws" {
 }
 
 module "networking" {
-  source = networking
+  source = "networking"
+}
+module "compute"{
+  source = "compute"
 }
