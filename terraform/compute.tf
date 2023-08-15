@@ -1,5 +1,5 @@
 
-resource "aws_instance" "temp-web-server" {
+resource "aws_instance" "webserver1" {
   ami           = var.ami
   instance_type = var.instance_type
   key_name = var.aws_key
@@ -9,12 +9,12 @@ resource "aws_instance" "temp-web-server" {
 
   user_data       = <<-EOF
               #!/bin/bash
-              yum install httpd -y
-              service httpd enable
-              service httpd start
+              yum install docker -y
+              service docker enable
+              service docker start
               EOF
   tags = {
-      Name = "temp-web-server"
+      Name = "webserver1"
       Owner = var.owner
       Project = var.project
   }
