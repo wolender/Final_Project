@@ -8,6 +8,7 @@ pipeline {
                 git branch: 'main', url:'https://github.com/wolender/Final_Project.git'
             }
         }
+        
         stage('Format') {
             steps{
                 dir('terraform') {
@@ -16,14 +17,7 @@ pipeline {
                
             }
         }
-        stage('Validate') {
-            steps{
-                dir('terraform') {
-                    sh 'terraform validate'
-                }
-               
-            }
-        }
+
         stage('Init') {
             steps{
                 dir('terraform') {
@@ -32,6 +26,16 @@ pipeline {
                
             }
         }
+
+        stage('Validate') {
+            steps{
+                dir('terraform') {
+                    sh 'terraform validate'
+                }
+               
+            }
+        }
+
         stage('Plan') {
             steps{
                 dir('terraform') {
