@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'main', url:'https://github.com/wolender/Final_Project.git'
             }
         }
-        
+    }
         stage('Format') {
             steps{
                 dir('terraform') {
@@ -38,9 +38,11 @@ pipeline {
 
         stage('Plan') {
             steps{
+                withCredentials([aws(credentials: 'Amazon', region: 'eu-central-1')]) {
                 dir('terraform') {
                     sh 'terraform plan'
                 }
+
             }
         }        
     }
