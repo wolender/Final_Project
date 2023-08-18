@@ -5,13 +5,12 @@ stages:
   - plan
 
 format-job:
-  variables:
-    CI_DEBUG_TRACE: "true"
-    
   stage: formating
   image: hashicorp/terraform:latest
   script:
     - terraform fmt
+  tags:
+    - main
 
 validate-job:
   stage: validate
