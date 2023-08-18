@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+
+    options {
+        // Set the working directory for the entire pipeline
+        dir './terraform'
+    }
+
     stages {
         stage('Pull') {
             steps {
@@ -9,7 +15,7 @@ pipeline {
         }
         stage('Format') {
             steps{
-               sh 'terraform fmt'
+                sh 'terraform fmt'
             }
         }
         stage('Validate') {
