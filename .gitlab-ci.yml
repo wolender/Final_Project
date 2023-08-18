@@ -1,4 +1,3 @@
-image: hashicorp/terraform:latest
 
 stages:
   - formating
@@ -7,6 +6,7 @@ stages:
 
 format-job:
   stage: formating
+  image: hashicorp/terraform:latest
   script:
     - terraform fmt
 
