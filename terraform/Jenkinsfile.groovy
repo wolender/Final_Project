@@ -38,10 +38,10 @@ pipeline {
 
         stage('Plan') {
             steps{
-                withCredentials([aws(credentials: 'Amazon', region: 'eu-central-1')]) {
-                dir('terraform') {
-                    sh 'terraform plan'
-                }
+                withAWS(credentials: 'Amazon', region: 'eu-central-1') {
+                    dir('terraform') {
+                        sh 'terraform plan'
+                    }
 
                 }
             }        
