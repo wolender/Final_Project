@@ -43,7 +43,10 @@ pipeline {
                     sh 'terraform plan'
                 }
 
-            }
-        }        
+                }
+            }        
+    
+
+        }
     }
 }
