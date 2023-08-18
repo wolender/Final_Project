@@ -50,11 +50,18 @@ pipeline {
 
         stage('Plan') {
             steps{
-                dir('terraform') {
-                    sh 'terraform plan'
+                withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'ID', passwordVariable: 'KEY')]) {
+                    
+                    sh 'export AWS_ACCESS_KEY_ID=$ID'
+                    sh 'export AWS_SECRET_ACCESS_KEY=$KEY'
+                    sh 'export AWS_DEFAULT_REGION=eu-central-1'
+
+                    dir('terraform') {
+                        sh 'terraform plan'
+                    }                    
+
                 }
 
-                
             }        
     
 
