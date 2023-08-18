@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'main', url:'https://github.com/wolender/Final_Project.git'
             }
         }
-    }
+    
         stage('Format') {
             steps{
                 dir('terraform') {
