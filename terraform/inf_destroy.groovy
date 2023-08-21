@@ -28,6 +28,15 @@ pipeline {
             }
         }
 
+        stage('Init') {
+            steps{
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+               
+            }
+        }
+
         stage('Destroy') {
             steps{
                 dir('terraform') {
