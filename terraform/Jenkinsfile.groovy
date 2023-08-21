@@ -43,5 +43,13 @@ pipeline {
                     }                    
                 }        
         }
+
+        stage('Apply') {
+            steps{
+                dir('terraform') {
+                        sh 'terraform apply -auto-approve'
+                    }                    
+                }        
+        }
     }
 }
