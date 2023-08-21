@@ -18,20 +18,19 @@ pipeline {
             }
         }
 
-
-        stage('Validate') {
+        stage('Init') {
             steps{
                 dir('terraform') {
-                    sh 'terraform validate'
+                    sh 'terraform init'
                 }
                
             }
         }
 
-        stage('Init') {
+        stage('Validate') {
             steps{
                 dir('terraform') {
-                    sh 'terraform init'
+                    sh 'terraform validate'
                 }
                
             }
