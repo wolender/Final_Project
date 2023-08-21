@@ -21,7 +21,7 @@ pipeline {
         stage('Init') {
             steps{
                 dir('terraform') {
-                    sh 'terraform init -migrate-state'
+                    sh 'terraform init -reconfigure'
                 }
                
             }
