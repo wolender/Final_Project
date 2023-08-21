@@ -1,7 +1,7 @@
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
-      Name = "tf-vpc"
+      Name = "wolender-tf-vpc"
       Owner = var.owner
       Project = var.project
   }
@@ -10,7 +10,7 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_internet_gateway" "my_igw" {
   vpc_id = aws_vpc.my_vpc.id
   tags = {
-      Name = "tf-gate"
+      Name = "wolender-tf-gate"
       Owner = var.owner
       Project = var.project
   }
@@ -21,7 +21,7 @@ resource "aws_subnet" "my_subnet1" {
   availability_zone = var.az1
   cidr_block              = "10.0.1.0/24" 
   tags = {
-      Name = "tf-subnet1"
+      Name = "wolender-tf-subnet1"
       Owner = var.owner
       Project = var.project
   }
@@ -32,7 +32,7 @@ resource "aws_subnet" "my_subnet2" {
   cidr_block              = "10.0.2.0/24" 
   availability_zone = var.az2
   tags = {
-      Name = "tf-subnet2"
+      Name = "wolender-tf-subnet2"
       Owner = var.owner
       Project = var.project
   }
@@ -46,7 +46,7 @@ resource "aws_route_table" "my_route_table" {
     gateway_id = aws_internet_gateway.my_igw.id
   }
   tags = {
-      Name = "tf-rtable"
+      Name = "wolender-tf-rtable"
       Owner = var.owner
       Project = var.project
   }
@@ -67,7 +67,7 @@ resource "aws_security_group" "instances" {
   description = "Allow SSH and HTTP inbound traffic"
   vpc_id      = aws_vpc.my_vpc.id
   tags = {
-      Name = "tf-sg"
+      Name = "wolender-tf-sg"
       Owner = var.owner
       Project = var.project
   }
@@ -102,7 +102,7 @@ resource "aws_security_group" "alb-sgroup" {
   description = "Allow SSH and HTTP inbound traffic"
   vpc_id      = aws_vpc.my_vpc.id
   tags = {
-      Name = "tf-sg"
+      Name = "wolender-tf-sg"
       Owner = var.owner
       Project = var.project
   }
