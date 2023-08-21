@@ -62,7 +62,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
     tags = {
-        Name = "Terraform-DB"
+        Name = "Terraform-lock"
         Owner = var.owner
         Project = var.project
     }
