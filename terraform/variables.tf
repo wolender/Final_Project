@@ -5,7 +5,11 @@ variable "access_ip" {
   type        = string
   default     = "0.0.0.0/0"
 }
-
+variable "region" {
+  description = "Default region for provider"
+  type        = string
+  default     = "eu-central-1"
+}
 #must be part of region above
 variable "az1" {
   description = "Avalabbiliity zone one for the application"
