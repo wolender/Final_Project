@@ -21,4 +21,24 @@
 #   parameter_group_name   = aws_db_parameter_group.parameter_group.name
 #   publicly_accessible    = true
 #   skip_final_snapshot    = true
+
+#   tags = {
+#       Name = "wolender-database"
+#       Owner = var.owner
+#       Project = var.project
+#   }
 # }
+
+resource "aws_ecr_repository" "ecr_repository" {
+  name = "my-ecr-repo"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  tags = {
+      Name = "wolender-ecr"
+      Owner = var.owner
+      Project = var.project
+  }
+}
