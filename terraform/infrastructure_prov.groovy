@@ -50,15 +50,8 @@ pipeline {
 
                     sh 'terraform apply -auto-approve'
 
-                    def appIP = sh(script: 'terraform output app_ip', returnStdout: true).trim()
-                    def ecrAddress = sh(script: 'terraform output ecr_address', returnStdout: true).trim()
-
-                    def content = """\
-                    App IP: ${appIP}
-                    ECR Address: ${ecrAddress}
-                    """
-
-                    writeFile file: '/var/lib/jenkins/env_variables.txt', text: content
+                    sh 'terraform output app_ip > /var/lib/jenkins/env.variables'
+                    sh 'terraform output ecr_address > /var/lib/jenkins/env.variables'
                     }                    
                 }        
         }
