@@ -48,6 +48,11 @@ pipeline {
             steps{
                 dir('terraform') {
                         sh 'terraform apply -auto-approve'
+                        
+                        sh 'echo """
+                        $(terraform output app_ip)
+                        $(terraform output ecr_address)
+                        """ > /var/lib/jenkins/env_variables.txt '
                     }                    
                 }        
         }
