@@ -50,9 +50,8 @@ pipeline {
 
                     sh 'terraform apply -auto-approve'
 
-                    sh 'echo "" > /var/lib/jenkins/env.variables'
-                    sh 'terraform output app_ip >> /var/lib/jenkins/env.variables'
-                    sh 'terraform output ecr_address >> /var/lib/jenkins/env.variables'
+                    sh 'echo "env.APP_IP=$(terraform output app_ip)" > /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.REPO_URL=$(terraform output ecr_address)" >> /var/lib/jenkins/env_variables.groovy'
                     }                    
                 }        
         }
