@@ -23,7 +23,7 @@ resource "aws_instance" "webserver1" {
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "example-instance-profile"
 
-  roles = ["allow_ec2_ecr"]
+  role = "allow_ec2_ecr"
   tags = {
       Name = "wolender_instance_pofile"
       Owner = var.owner
