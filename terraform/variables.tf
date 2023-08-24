@@ -55,5 +55,10 @@ variable "instance_type" {
   default     = "t2.small"
 }
 
+variable "SQ_instance_type" {
+  description = "ec2 instance type"
+  type        = string
+  default     = "t2.medium"
+}
 
 

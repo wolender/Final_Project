@@ -5,7 +5,7 @@ resource "aws_lb_listener" "http" {
 
   protocol = "HTTP"
   tags = {
-      Name = "tf-lbl"
+      Name = "wolender-tf-lbl"
       Owner = var.owner
       Project = var.project
   }
@@ -22,12 +22,12 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "instances" {
-  name     = "web-servers-tg"
+  name     = "wolender-web-servers-tg"
   port     = 8080
   protocol = "HTTP"
   vpc_id   = aws_vpc.my_vpc.id
   tags = {
-      Name = "tf-tg"
+      Name = "wolender-tf-tg"
       Owner = var.owner
       Project = var.project
   }
@@ -54,7 +54,7 @@ resource "aws_lb_listener_rule" "instances" {
   listener_arn = aws_lb_listener.http.arn
   priority     = 100
   tags = {
-      Name = "tf-rule"
+      Name = "wolender-tf-rule"
       Owner = var.owner
       Project = var.project
   }
@@ -71,13 +71,13 @@ resource "aws_lb_listener_rule" "instances" {
   }
 }
 resource "aws_lb" "load_balancer" {
-  name               = "web-app-lb"
+  name               = "wolender-web-app-lb"
   load_balancer_type = "application"
   subnets          = [aws_subnet.my_subnet1.id,aws_subnet.my_subnet2.id]
   security_groups    = [aws_security_group.alb-sgroup.id]
   
   tags = {
-      Name = "tf-alb"
+      Name = "wolender-tf-alb"
       Owner = var.owner
       Project = var.project
   }
