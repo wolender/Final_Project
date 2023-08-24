@@ -123,6 +123,32 @@ resource "aws_security_group" "alb-sgroup" {
   
 }
 
+resource "aws_security_group" "SQ-sgroup" {
+  name="SQ-group"
+  description = "Allow SSH and HTTP inbound traffic"
+  vpc_id      = aws_vpc.my_vpc.id
+  tags = {
+      Name = "wolender-tf-SQ-sg"
+      Owner = var.owner
+      Project = var.project
+  }
+
+  ingress {
+    description = "SonarQube_dasboard access"
+    from_port   = 9000
+    to_port     = 9000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+}
+
 resource "aws_security_group_rule" "my_outbound_rule" {
   type        = "egress"
   from_port   = 0
