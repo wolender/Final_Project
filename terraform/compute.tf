@@ -32,7 +32,7 @@ resource "aws_instance" "webserver1" {
   }
 }
 
-resource "aws_instance" "webserver1" {
+resource "aws_instance" "SQ_scanner" {
   ami           = var.ami
   instance_type = var.SQ_instance_type
   key_name = var.aws_key
