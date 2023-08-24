@@ -1,4 +1,15 @@
 
+resource "aws_iam_instance_profile" "instance_profile" {
+  name = "wolender-instance-profile"
+
+  role = "allow_ec2_ecr"
+  tags = {
+      Name = "wolender_instance_pofile"
+      Owner = var.owner
+      Project = var.project
+  }
+}
+
 resource "aws_instance" "webserver1" {
   ami           = var.ami
   instance_type = var.instance_type
@@ -16,16 +27,6 @@ resource "aws_instance" "webserver1" {
               EOF
   tags = {
       Name = "webserver1"
-      Owner = var.owner
-      Project = var.project
-  }
-}
-resource "aws_iam_instance_profile" "instance_profile" {
-  name = "example-instance-profile"
-
-  role = "allow_ec2_ecr"
-  tags = {
-      Name = "wolender_instance_pofile"
       Owner = var.owner
       Project = var.project
   }
