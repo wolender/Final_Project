@@ -38,6 +38,17 @@ resource "aws_subnet" "my_subnet2" {
   }
 }
 
+resource "aws_db_subnet_group" "db_subnet_group" {
+  name       = "wolender-db-subnet-group"
+  subnet_ids = [aws_subnet.my_subnet1.id, aws_subnet.my_subnet2.id]
+
+  tags = {
+    Name    = "wolender-db-subnet-group"
+    Owner   = var.owner
+    Project = var.project
+  }
+}
+
 resource "aws_route_table" "my_route_table" {
   vpc_id = aws_vpc.my_vpc.id
 

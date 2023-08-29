@@ -10,7 +10,7 @@ resource "aws_db_instance" "app-database" {
   password               = var.MySQL_passwword
   parameter_group_name   = "default.mysql5.7"
   vpc_security_group_ids = [aws_security_group.DB_sec_group.id]
-  subnets                = [aws_subnet.my_subnet1.id, aws_subnet.my_subnet2.id]
+  db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
 
   tags = {
     Name    = "wolender-database"
