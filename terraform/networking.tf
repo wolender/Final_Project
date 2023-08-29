@@ -148,6 +148,31 @@ resource "aws_security_group" "SQ-sgroup" {
   }
 
 }
+resource "aws_security_group" "DB_sec_group" {
+  name        = "wolender-db-sec-group"
+  description = "Allow SSH and HTTP inbound traffic"
+  vpc_id      = aws_vpc.my_vpc.id
+  tags = {
+    Name    = "wolender-tf-db-group"
+    Owner   = var.owner
+    Project = var.project
+  }
+
+  ingress {
+    description = "SonarQube_dasboard access"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
 
 resource "aws_security_group_rule" "my_outbound_rule" {
   type        = "egress"

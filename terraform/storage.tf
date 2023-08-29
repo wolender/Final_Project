@@ -1,23 +1,16 @@
-# resource "aws_db_parameter_group" "parameter_group" {
-#   name   = "education"
-#   family = "postgres14"
 
-#   parameter {
-#     name  = "log_connections"
-#     value = "1"
-#   }
-# }
-
-resource "aws_db_instance" "example" {
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  name                 = "mydb"
-  username             = "admin"
-  password             = "mysecretpassword"
-  parameter_group_name = "default.mysql5.7"
+resource "aws_db_instance" "app-database" {
+  allocated_storage      = 20
+  storage_type           = "gp2"
+  engine                 = "mysql"
+  engine_version         = "5.7"
+  instance_class         = "db.t2.micro"
+  name                   = "wolender-db"
+  username               = var.MySQL_login
+  password               = var.MySQL_passwword
+  parameter_group_name   = "default.mysql5.7"
+  vpc_security_group_ids = [aws_security_group.DB_sec_group.id]
+  subnets                = [aws_subnet.my_subnet1.id, aws_subnet.my_subnet2.id]
 
   tags = {
     Name    = "wolender-database"
