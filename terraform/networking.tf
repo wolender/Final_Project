@@ -136,7 +136,7 @@ resource "aws_security_group" "alb-sgroup" {
 
 resource "aws_security_group" "SQ-sgroup" {
   name        = "SQ-group"
-  description = "Allow SSH and HTTP inbound traffic"
+  description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.my_vpc.id
   tags = {
     Name    = "wolender-tf-SQ-sg"
@@ -161,7 +161,7 @@ resource "aws_security_group" "SQ-sgroup" {
 }
 resource "aws_security_group" "DB_sec_group" {
   name        = "wolender-db-sec-group"
-  description = "Allow SSH and HTTP inbound traffic"
+  description = "HTTP inbound traffic"
   vpc_id      = aws_vpc.my_vpc.id
   tags = {
     Name    = "wolender-tf-db-group"
@@ -170,7 +170,7 @@ resource "aws_security_group" "DB_sec_group" {
   }
 
   ingress {
-    description = "SonarQube_dasboard access"
+    description = "MySQL database access"
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"

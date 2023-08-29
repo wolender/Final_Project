@@ -74,7 +74,7 @@ variable "MySQL_login" {
 variable "MuSQL_name" {
   description = "database name"
   type        = string
-  default     = "petcinicDB"
+  default     = "petclinic"
 }
 
 
