@@ -5,9 +5,9 @@ resource "aws_lb_listener" "http" {
 
   protocol = "HTTP"
   tags = {
-      Name = "wolender-tf-lbl"
-      Owner = var.owner
-      Project = var.project
+    Name    = "wolender-tf-lbl"
+    Owner   = var.owner
+    Project = var.project
   }
   # By default, return a simple 404 page
   default_action {
@@ -27,9 +27,9 @@ resource "aws_lb_target_group" "instances" {
   protocol = "HTTP"
   vpc_id   = aws_vpc.my_vpc.id
   tags = {
-      Name = "wolender-tf-tg"
-      Owner = var.owner
-      Project = var.project
+    Name    = "wolender-tf-tg"
+    Owner   = var.owner
+    Project = var.project
   }
 
   health_check {
@@ -54,9 +54,9 @@ resource "aws_lb_listener_rule" "instances" {
   listener_arn = aws_lb_listener.http.arn
   priority     = 100
   tags = {
-      Name = "wolender-tf-rule"
-      Owner = var.owner
-      Project = var.project
+    Name    = "wolender-tf-rule"
+    Owner   = var.owner
+    Project = var.project
   }
 
   condition {
@@ -73,13 +73,13 @@ resource "aws_lb_listener_rule" "instances" {
 resource "aws_lb" "load_balancer" {
   name               = "wolender-web-app-lb"
   load_balancer_type = "application"
-  subnets          = [aws_subnet.my_subnet1.id,aws_subnet.my_subnet2.id]
+  subnets            = [aws_subnet.my_subnet1.id, aws_subnet.my_subnet2.id]
   security_groups    = [aws_security_group.alb-sgroup.id]
-  
+
   tags = {
-      Name = "wolender-tf-alb"
-      Owner = var.owner
-      Project = var.project
+    Name    = "wolender-tf-alb"
+    Owner   = var.owner
+    Project = var.project
   }
 
 }

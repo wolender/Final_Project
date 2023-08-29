@@ -46,7 +46,7 @@ variable "ami" {
 variable "aws_key" {
   description = "Amazon machine image to use for ec2 instance"
   type        = string
-  default     = "wolender_key" 
+  default     = "wolender_key"
 }
 
 variable "instance_type" {
@@ -59,6 +59,11 @@ variable "SQ_instance_type" {
   description = "ec2 instance type"
   type        = string
   default     = "t2.medium"
+}
+
+variable "MySQL_passwword" {
+  description = "password for database"
+  type        = string
 }
 
 
