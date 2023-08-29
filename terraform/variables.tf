@@ -64,7 +64,7 @@ variable "SQ_instance_type" {
 variable "MySQL_passwword" {
   description = "password for database"
   type        = string
-  default     = "admin"
+  default     = "petclinic-password"
 }
 variable "MySQL_login" {
   description = "login for database"
