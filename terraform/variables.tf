@@ -71,7 +71,7 @@ variable "MySQL_login" {
   type        = string
   default     = "admin"
 }
-variable "MuSQL_name" {
+variable "MySQL_name" {
   description = "database name"
   type        = string
   default     = "petclinic"

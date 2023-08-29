@@ -13,6 +13,6 @@ output "app_lb_ip" {
 output "db_user" {
   value = aws_db_instance.app-database.username
 }
-output "db_password" {
-  value = aws_db_instance.app-database.password
-}
+# output "db_password" {
+#   value = aws_db_instance.app-database.password
+# }
