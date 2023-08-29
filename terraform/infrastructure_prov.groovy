@@ -52,6 +52,10 @@ pipeline {
 
                     sh 'echo "env.APP_IP=$(terraform output app_ip)" > /var/lib/jenkins/env_variables.groovy'
                     sh 'echo "env.REPO_URL=$(terraform output ecr_address)" >> /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.DB_URL=jdbc:mysql://$(terraform output DB_url)/petclinic" >> /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.APP_LB_URL=$(terraform output app_lb_ip)" >> /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.DB_PASS=$(terraform output db_password)" >> /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.DB_USER=$(terraform output db_user)" >> /var/lib/jenkins/env_variables.groovy'
                     }                    
                 }        
         }
