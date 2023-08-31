@@ -61,15 +61,15 @@ variable "SQ_instance_type" {
   default     = "t2.medium"
 }
 
-variable "MySQL_passwword" {
+variable "MySQL_password" {
   description = "password for database"
   type        = string
-  default     = "petclinic-password"
+  default     = "petclinic"
 }
 variable "MySQL_login" {
   description = "login for database"
   type        = string
-  default     = "admin"
+  default     = "petclinic"
 }
 variable "MySQL_name" {
   description = "database name"
