@@ -7,7 +7,7 @@ resource "aws_db_instance" "app-database" {
   instance_class         = "db.t2.micro"
   name                   = var.MySQL_name
   username               = var.MySQL_login
-  password               = var.MySQL_passwword
+  password               = var.MySQL_password
   parameter_group_name   = "default.mysql5.7"
   vpc_security_group_ids = [aws_security_group.DB_sec_group.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
