@@ -43,6 +43,8 @@ variable "ami" {
   default     = "ami-0dc7fe3dd38437495" # amazon machine eu-central
 }
 
+
+
 variable "aws_key" {
   description = "Amazon machine image to use for ec2 instance"
   type        = string
@@ -55,11 +57,6 @@ variable "instance_type" {
   default     = "t2.small"
 }
 
-variable "SQ_instance_type" {
-  description = "ec2 instance type"
-  type        = string
-  default     = "t2.medium"
-}
 
 variable "MySQL_password" {
   description = "password for database"
