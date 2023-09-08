@@ -1,7 +1,7 @@
 pipeline {
     agent {
 
-        label 'wolender-jenkins-fleet'
+        label 'ec2-fleet'
 
         }
 
