@@ -1,5 +1,9 @@
 pipeline {
-    agent { label 'ec2-fleet' }
+    agent {
+
+        label 'wolender-jenkins-fleet'
+
+        }
 
 
     stages {
