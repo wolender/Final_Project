@@ -5,7 +5,7 @@ pipeline {
 
         }
     tools {
-        jdk 'java_9.0.4'
+        jdk 'java_8'
     } 
 
 
