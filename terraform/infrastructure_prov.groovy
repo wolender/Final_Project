@@ -4,10 +4,7 @@ pipeline {
         label 'ec2-fleet'
 
         }
-    tools {
-        
-        name: 'java_9.0.4', type: 'jdk'
-    }
+    tool name: 'java_9.0.4', type: 'jdk'
 
 
     stages {
