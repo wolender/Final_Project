@@ -4,6 +4,10 @@ pipeline {
         label 'ec2-fleet'
 
         }
+    tools {
+        
+        name: 'java_9.0.4', type: 'jdk'
+    }
 
 
     stages {
@@ -54,12 +58,16 @@ pipeline {
 
                     sh 'terraform apply -auto-approve'
 
-                    sh 'echo "env.APP_IP=$(terraform output app_ip)" > /var/lib/jenkins/env_variables.groovy'
-                    sh 'echo "env.REPO_URL=$(terraform output ecr_address)" >> /var/lib/jenkins/env_variables.groovy'
-                    sh 'echo "env.MYSQL_URL=$(terraform output DB_url)" >> /var/lib/jenkins/env_variables.groovy'
-                    sh 'echo "env.APP_LB_URL=$(terraform output app_lb_ip)" >> /var/lib/jenkins/env_variables.groovy'
-                    // sh 'echo "env.MYSQL_PASS=$(terraform output db_password)" >> /var/lib/jenkins/env_variables.groovy'
-                    sh 'echo "env.MYSQL_USER=$(terraform output db_user)" >> /var/lib/jenkins/env_variables.groovy'
+                    sh 'echo "env.APP_IP=$(terraform output app_ip)" > ./env_variables.groovy'
+                    sh 'echo "env.REPO_URL=$(terraform output ecr_address)" >> ./env_variables.groovy'
+                    sh 'echo "env.MYSQL_URL=$(terraform output DB_url)" >> ./env_variables.groovy'
+                    sh 'echo "env.APP_LB_URL=$(terraform output app_lb_ip)" >> ./env_variables.groovy'
+                    // sh 'echo "env.MYSQL_PASS=$(terraform output db_password)" >> ./jenkins/env_variables.groovy'
+                    sh 'echo "env.MYSQL_USER=$(terraform output db_user)" >> ./env_variables.groovy'
+        
+                    archiveArtifacts artifacts: "env_variables.groovy", fingerprint: true
+        
+                    
                     }                    
                 }        
         }
