@@ -47,7 +47,7 @@ pipeline {
                         sh """
                         export TF_VAR_MySQL_password=${PASSWORD}
                         export TF_VAR_MySQL_login=${USERNAME}
-                        sh 'terraform plan'
+                        terraform plan
                         """
                         }
                     }                    
