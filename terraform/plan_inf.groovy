@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+
+        label 'ec2-fleet'
+
+        }
 
 
     stages {
@@ -39,7 +43,13 @@ pipeline {
         stage('Plan') {
             steps{
                 dir('terraform') {
+                    withCredentials([usernamePassword(credentialsId: 'db_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                        export TF_VAR_MySQL_password=${PASSWORD}
+                        export TF_VAR_MySQL_login=${USERNAME}
                         sh 'terraform plan'
+                        """
+                        }
                     }                    
                 }        
         }
